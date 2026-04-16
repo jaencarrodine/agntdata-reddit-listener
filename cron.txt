@@ -1,0 +1,12 @@
+# agntdata Reddit Listener — crontab entry
+# Runs at 9am and 3pm in your local timezone
+# Adjust the UTC hours to match (CDMX = UTC-6, so 15:00 and 21:00 UTC)
+
+# Option 1: run with .env loaded
+0 15,21 * * * cd /path/to/agntdata-reddit-listener && export $(cat .env | xargs) && python3 listener.py >> logs/listener.log 2>&1
+
+# Option 2: if you've hardcoded keys in listener.py
+# 0 15,21 * * * cd /path/to/agntdata-reddit-listener && python3 listener.py >> logs/listener.log 2>&1
+
+# To install: crontab -e
+# To verify: crontab -l
